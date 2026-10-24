@@ -642,7 +642,7 @@ document.getElementById("shop").innerHTML=SHOP.map(function(it){if(it[3]==="cons
 return '<div class="g"><label>'+it[1]+'</label><button class="tm'+(!own&&(S.coins||0)<it[2]?' off':'')+'" data-s="'+it[0]+'">'+lb+'</button></div>'}).join("");
 document.getElementById("achs").innerHTML=ACH.map(function(a){return '<span style="display:inline-block;margin:4px;padding:6px 10px;border-radius:14px;background:var(--bg);opacity:'+(S.ach[a[0]]?1:.35)+'">'+a[2]+' '+a[1]+'</span>'}).join("");
 document.getElementById("plant").style.setProperty("--pot",S.pot||"");
-["acBow","acGl","acCrown","acColl","acFlower","acStar"].forEach(function(a){document.getElementById(a).style.display=S.acc[a]?"":"none"});
+["acBow","acGl","acCrown","acColl","acFlower","acStar","acTiara","acWings","acScarf","acGrad","acPhones","acPump","acXmas","acHrts"].forEach(function(a){var q=document.getElementById(a);if(q)q.style.display=S.acc[a]?"":"none"});
 var se=seaInfo();document.getElementById("sea").textContent=se[1]+" "+se[0]+": tu planta se viste de estación.";
 document.getElementById("snd").textContent=S.mute?"🔇":"🔊";fcText();extras2()}
 document.getElementById("shop").onclick=function(e){var id=e.target.getAttribute("data-s");if(!id)return;var it=SHOP.filter(function(x){return x[0]===id})[0],own=it[2]===0||S.own[id];
@@ -1011,7 +1011,10 @@ cat=O+'"Gatito" class="c">'+SH+leg("a",30,66,10,27,"#d9873a")+leg("b",70,66,10,2
 frog=O+'"Ranita" class="f">'+SH+'<g class="lg a"><ellipse cx="32" cy="87" rx="17" ry="7" fill="#4fb05a"/></g><g class="bd"><ellipse cx="50" cy="68" rx="34" ry="23" fill="#5fc46a"/><ellipse cx="62" cy="78" rx="20" ry="11" fill="#c7f0be"/><ellipse cx="32" cy="74" rx="17" ry="15" fill="#52b85e"/></g><g class="lg b"><ellipse cx="82" cy="88" rx="13" ry="6" fill="#4fb05a"/></g><g class="hd"><ellipse cx="90" cy="58" rx="24" ry="18" fill="#5fc46a"/><circle cx="80" cy="40" r="10" fill="#5fc46a"/><circle cx="101" cy="40" r="10" fill="#5fc46a"/><circle class="ey" cx="80" cy="40" r="7.500" fill="#fff"/><circle class="ey" cx="101" cy="40" r="7.500" fill="#fff"/>'+face(80,101,40,95,63)+'</g></svg>',
 tur=O+'"Tortuga" class="t">'+SH+leg("a",28,80,14,13,"#7fb35e")+leg("b",66,80,14,13,"#7fb35e")+'<path class="tl" d="M18 84L3 89L19 91Z" fill="#8bbf6a"/><g class="bd"><path d="M12 86Q12 28 52 28Q92 28 92 86Z" fill="#4fa36a"/><path d="M32 86Q30 52 40 36M52 30V86M72 86Q74 52 64 36" stroke="#2e7a4a" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="10" y="82" width="84" height="9" rx="4.500" fill="#e8c98a"/></g>'+leg("b",40,80,14,13,"#8bbf6a")+leg("a",76,80,14,13,"#8bbf6a")+'<g class="hd"><rect x="86" y="60" width="16" height="26" rx="8" fill="#9ccf78"/><ellipse cx="102" cy="64" rx="17" ry="14" fill="#9ccf78"/>'+face(95,110,62,103,71)+'</g></svg>',
 bug=O+'"Mariquita" class="l">'+SH+'<g class="lg a"><path d="M36 80L30 93M56 82L54 94M76 80L82 93" stroke="#2b1624" stroke-width="3.400" fill="none" stroke-linecap="round"/></g><g class="lg b"><path d="M46 82L42 94M66 82L68 94M86 78L94 91" stroke="#2b1624" stroke-width="3.400" fill="none" stroke-linecap="round"/></g><path class="tl" d="M92 48Q96 26 112 20" stroke="#2b1624" stroke-width="3" fill="none" stroke-linecap="round"/><g class="bd"><path d="M8 84Q8 26 52 26Q96 26 96 84Z" fill="#e8344e"/><path d="M52 27V84" stroke="#2b1624" stroke-width="3"/><circle cx="30" cy="56" r="7" fill="#2b1624"/><circle cx="72" cy="52" r="7" fill="#2b1624"/><circle cx="40" cy="74" r="5.500" fill="#2b1624"/><circle cx="76" cy="72" r="5" fill="#2b1624"/></g><g class="hd"><circle cx="96" cy="64" r="20" fill="#2b1624"/><ellipse cx="99" cy="66" rx="16" ry="13" fill="#ffe9d6"/>'+face(91,107,64,99,72)+'</g></svg>';
-var P={"🐱":{s:80,m:[101,56],v:cat},"🐸":{s:60,m:[95,63],v:frog},"🐢":{s:26,m:[103,71],v:tur},"🐞":{s:52,m:[99,72],v:bug}};
+var bun=O+'"Conejito" class="r">'+SH+leg("a",30,66,10,27,"#e9e2ee")+leg("b",70,66,10,27,"#e9e2ee")+'<circle class="tl" cx="22" cy="70" r="9" fill="#fff"/><g class="bd"><ellipse cx="52" cy="64" rx="32" ry="19" fill="#f3eef7"/><ellipse cx="56" cy="75" rx="21" ry="8" fill="#fff"/></g>'+leg("b",38,66,10,27,"#f3eef7","#fff")+leg("a",80,66,10,27,"#f3eef7","#fff")+'<g class="hd"><ellipse cx="82" cy="20" rx="6" ry="18" fill="#f3eef7" transform="rotate(-10 82 20)"/><ellipse cx="82" cy="22" rx="3" ry="12" fill="#ffb3d1" transform="rotate(-10 82 22)"/><ellipse cx="102" cy="20" rx="6" ry="18" fill="#f3eef7" transform="rotate(12 102 20)"/><ellipse cx="102" cy="22" rx="3" ry="12" fill="#ffb3d1" transform="rotate(12 102 22)"/><ellipse cx="92" cy="46" rx="22" ry="19" fill="#f3eef7"/><ellipse cx="101" cy="54" rx="10" ry="7.5" fill="#fff"/><path d="M98 49h7l-3.5 4z" fill="#ff8fb5"/>'+face(85,104,44,101,57)+'</g></svg>';
+var uni=O+'"Unicornio" class="u">'+SH+leg("a",30,66,10,27,"#f0d4e6")+leg("b",70,66,10,27,"#f0d4e6")+'<path class="tl" d="M24 62Q4 60 6 40M24 66Q8 66 8 50" stroke="#ff8fc0" stroke-width="7" fill="none" stroke-linecap="round"/><g class="bd"><ellipse cx="52" cy="64" rx="32" ry="19" fill="#fff0f8"/></g>'+leg("b",38,66,10,27,"#fff0f8","#ff9ecb")+leg("a",80,66,10,27,"#fff0f8","#ff9ecb")+'<g class="hd"><path d="M62 30Q58 46 70 56" stroke="#b58be0" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M68 28Q66 40 76 48" stroke="#5bc0eb" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M96 12L91 36L103 34Z" fill="#ffd34d" stroke="#e0a800" stroke-width="1.5" stroke-linejoin="round"/><path d="M76 34L74 18L88 30Z" fill="#fff0f8"/><ellipse cx="92" cy="46" rx="22" ry="19" fill="#fff0f8"/><ellipse cx="102" cy="54" rx="10" ry="8" fill="#ffd1e8"/>'+face(85,104,44,101,58)+'</g></svg>';
+var dog=O+'"Perrito" class="d">'+SH+leg("a",30,66,10,27,"#b9824f")+leg("b",70,66,10,27,"#b9824f")+'<path class="tl" d="M24 62Q6 56 8 36" stroke="#d99a5e" stroke-width="9" fill="none" stroke-linecap="round"/><g class="bd"><ellipse cx="52" cy="64" rx="32" ry="19" fill="#d99a5e"/><ellipse cx="56" cy="75" rx="21" ry="8" fill="#f6dcb8"/></g>'+leg("b",38,66,10,27,"#d99a5e","#f6dcb8")+leg("a",80,66,10,27,"#d99a5e","#f6dcb8")+'<g class="hd"><ellipse cx="76" cy="40" rx="9" ry="16" fill="#8a5a33" transform="rotate(14 76 40)"/><ellipse cx="108" cy="40" rx="9" ry="16" fill="#8a5a33" transform="rotate(-14 108 40)"/><ellipse cx="92" cy="46" rx="21" ry="19" fill="#d99a5e"/><ellipse cx="101" cy="55" rx="11" ry="8" fill="#f6dcb8"/><ellipse cx="106" cy="51" rx="4" ry="3" fill="#3a1a2e"/>'+face(85,102,44,100,60)+'</g></svg>';
+var P={"🐰":{s:90,m:[101,57],v:bun},"🦄":{s:85,m:[101,58],v:uni},"🐶":{s:80,m:[100,60],v:dog},"🐱":{s:80,m:[101,56],v:cat},"🐸":{s:60,m:[95,63],v:frog},"🐢":{s:26,m:[103,71],v:tur},"🐞":{s:52,m:[99,72],v:bug}};
 for(var k in P)PETSVG[k]='<div class="pw">'+P[k].v+'</div>';
 
 /* reemplazo el span de la mascota para soltar los listeners viejos */
@@ -1033,7 +1036,7 @@ function doAct(c,ms){pet.classList.add(c);act=ms/1e3;setTimeout(function(){pet.c
 function hearts(n){if(S.calm)return;var g=geo(),hx=g.L+X+(dir>0?.74:.26)*g.W,hy=g.gy-62*g.k,E=["💗","💖","❤️","💕"],i,s;for(i=0;i<(n||3);i++){s=document.createElement("span");s.className="hrt";s.textContent=E[Math.floor(Math.random()*4)];s.style.left=(hx+rnd(-14,14))+"px";s.style.top=hy+"px";s.style.setProperty("--dx",rnd(-30,30)+"px");yard.appendChild(s);setTimeout(function(x){x.remove()},1400,s)}}
 
 /* caricias: cierra los ojos, sonríe, corazones */
-var MS={"🐱":["¡Ronronea de felicidad!","Cierra los ojitos 😻","Mueve la colita contenta"],"🐸":["¡Croac! Está feliz","Se infla de contenta","Cierra los ojitos y sonríe"],"🐢":["Asoma la cabecita feliz","Sonríe despacito","¡Le encanta que la mimes!"],"🐞":["Mueve las antenitas","¡Qué cosquillas!","Sonríe con los ojitos cerrados"]};
+var MS={"🐰":["¡Mueve la nariz feliz!","Mueve las orejitas","Da saltitos de alegría"],"🦄":["¡Su cuerno brilla de felicidad!","Relincha contento ✨","Mueve la melena de colores"],"🐶":["¡Mueve la cola feliz!","Cierra los ojitos y sonríe","¡Qué mimoso!"],"🐱":["¡Ronronea de felicidad!","Cierra los ojitos 😻","Mueve la colita contenta"],"🐸":["¡Croac! Está feliz","Se infla de contenta","Cierra los ojitos y sonríe"],"🐢":["Asoma la cabecita feliz","Sonríe despacito","¡Le encanta que la mimes!"],"🐞":["Mueve las antenitas","¡Qué cosquillas!","Sonríe con los ojitos cerrados"]};
 function pat(){if(pet.hidden||!S.pet||!P[S.pet])return;var n=performance.now();if(n-lp<260)return;lp=n;pu=n+1600;S.pats=(S.pats||0)+1;
 if(navigator.vibrate&&!S.calm)try{navigator.vibrate(8)}catch(e){}
 if(S.pats%10===0){S.coins=(S.coins||0)+1;save();render();say2("¡Tanto cariño! +1 moneda 💰")}else{say2(night?"Zzz… duerme y aun así se deja acariciar 💤":MS[S.pet][S.pats%3]);if(typeof saveLocal==="function")saveLocal()}
@@ -1133,6 +1136,325 @@ function evn(){var d=new Date(),k=(d.getMonth()+1)*100+d.getDate();if(k>=1020&&k
 var E=evn();if(E&&vs){var sd=document.createElement("div");sd.className="sea2";sd.setAttribute("aria-hidden","true");sd.innerHTML='<span style="right:8px;bottom:6px;font-size:36px">'+E.e[0]+'</span><span class="fl" style="right:14%;top:14%;font-size:24px">'+E.e[1]+'</span><span class="fl" style="left:12%;top:42%;font-size:22px;animation-delay:-2s">'+E.e[2]+'</span>';vs.appendChild(sd)}
 var g0=G();if(g0.gift!==today()){var bn=5+Math.min(curStreak(),5)+(E?5:0);g0.gift=today();S.coins=(S.coins||0)+bn;save();if(typeof render==="function")render();setTimeout(function(){toast("🎁 Regalo diario: +"+bn+" monedas"+(E?" · Evento "+E.n:""));tone([[660,0],[880,.12],[1047,.24]])},1500)}
 try{chk();upd()}catch(e){}
+})();
+</script>
+<style>
+#tb{display:none}
+.petbar{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:0 0 12px}
+.petbar button{min-height:44px;padding:0 16px;border-radius:999px;border:2px solid var(--line);background:var(--surf);color:var(--ink);font-weight:600;font-size:15px;box-shadow:0 3px 0 var(--line)}
+.petbar button[hidden]{display:none}
+.cat{font-size:12px;padding:1px 8px;border-radius:999px;background:var(--bg2);color:var(--mute);margin-right:6px;white-space:nowrap}
+#ut{position:fixed;left:50%;bottom:calc(70px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:99;display:flex;gap:12px;align-items:center;background:var(--ink);color:var(--bg);padding:8px 8px 8px 16px;border-radius:16px;max-width:calc(100% - 32px)}
+#ut[hidden]{display:none}
+#ut button{background:var(--acc);color:var(--onacc);border:0;border-radius:12px;min-height:40px;padding:0 14px;font-weight:600}
+#scene>#pet[data-evo="0"]{transform:scale(.78);transform-origin:50% 100%}
+#scene>#pet[data-evo="1"]{transform:scale(.92);transform-origin:50% 100%}
+#scene>#pet::before{position:absolute;top:-10px;left:38%;font-size:22px;line-height:1;z-index:5}
+#scene>#pet[data-evo="2"]::before{content:"✨"}
+#scene>#pet[data-evo="3"]::before{content:"👑"}
+#scene>#pet[data-evo="4"]::before{content:"🌟"}
+#scene>#pet[data-evo="4"]{filter:drop-shadow(0 0 8px #ffd34d)}
+#pet.eat .mh{opacity:1;transform-box:fill-box;transform-origin:50% 0;animation:mch .28s ease-in-out infinite}
+#pet.eat .mo{opacity:0}
+@keyframes mch{50%{transform:scaleY(.25)}}
+#pet.eat .hd{transform-box:fill-box;transform-origin:50% 100%;animation:hdc .28s ease-in-out infinite}
+@keyframes hdc{50%{transform:translateY(2px) rotate(3deg)}}
+.fd,.hand{position:absolute;font-size:26px;line-height:1;z-index:5}
+.hand{animation:hnd .35s ease-in-out 3}
+@keyframes hnd{50%{transform:translateX(14px) rotate(14deg)}}
+.bfa{position:relative;height:260px;border-radius:18px;overflow:hidden;background:linear-gradient(#bfe9ff,#9be08a);margin:10px 0;touch-action:manipulation}
+.bfa button{position:absolute;width:48px;height:48px;background:none;border:0;font-size:34px;line-height:1;padding:0;transition:left .9s ease-in-out,top .9s ease-in-out}
+.mc{height:78px;font-size:32px;border-radius:14px;border:2px solid var(--line);background:var(--surf);color:var(--ink);padding:0}.mc:disabled{opacity:1}.mgb{position:relative;height:260px;border-radius:18px;overflow:hidden;background:linear-gradient(#bfe9ff,#9be08a);margin:10px 0;touch-action:manipulation}.bfl{position:absolute;width:48px;height:48px;background:none;border:0;font-size:34px;line-height:1;padding:0}.tm.off{opacity:.45}
+@media (prefers-reduced-motion:reduce){.hand,#pet.eat .mh,#pet.eat .hd{animation:none}}
+</style>
+<script>/* mejoras v3 */
+(function(){
+function tst(t){var e=document.getElementById("gtoast");if(!e)return;e.textContent=t;e.classList.add("on");clearTimeout(tst.t);tst.t=setTimeout(function(){e.classList.remove("on")},2800)}
+function modal(h){var o=document.createElement("div");o.className="ov";o.setAttribute("role","dialog");o.setAttribute("aria-modal","true");o.innerHTML='<div class="card">'+h+'</div>';document.body.appendChild(o);return o}
+var CN=["Sin categoria","Estudio","Salud","Casa","Personal"],CE=["","📚 Estudio","💪 Salud","🏠 Casa","🎨 Personal"];
+
+/* ---- categorias ---- */
+var sel=document.createElement("select");sel.id="gcat";sel.className="ei";sel.setAttribute("aria-label","Categoría");sel.innerHTML=CE.map(function(c,i){return '<option value="'+i+'">'+(c||"Sin categoría")+'</option>'}).join("");
+document.getElementById("gf").insertAdjacentElement("afterend",sel);
+var n0=0;
+function tag(){if(S.goals.length>n0){S.goals[S.goals.length-1].c=+sel.value;sel.value="0";save();render()}}
+document.getElementById("addb").addEventListener("click",function(){n0=S.goals.length},true);
+document.getElementById("addb").addEventListener("click",tag);
+document.getElementById("new").addEventListener("keydown",function(){n0=S.goals.length},true);
+document.getElementById("new").addEventListener("keydown",function(e){if(e.key==="Enter")tag()});
+function decorate(){document.querySelectorAll("#goals .g").forEach(function(r){var b=r.querySelector("[data-id]"),l=r.querySelector("label");if(!b||!l||l.querySelector(".cat"))return;var g=S.goals.filter(function(x){return String(x.id)===b.getAttribute("data-id")})[0];if(g&&g.c)l.insertAdjacentHTML("afterbegin",'<span class="cat">'+CE[g.c]+'</span>')})}
+function catTotals(days){var t=[0,0,0,0,0],lim=Date.now()-days*DAY;Object.keys(S.cnt||{}).forEach(function(d){var p=d.split("-");if(new Date(+p[0],p[1]-1,+p[2]).getTime()>=lim)Object.keys(S.cnt[d]).forEach(function(id){var g=S.goals.filter(function(x){return String(x.id)===id})[0];t[g&&g.c?g.c:0]+=S.cnt[d][id]})});return t}
+var _gs=gstats;gstats=function(){_gs();var t=catTotals(30),mx=Math.max.apply(null,t);document.getElementById("gs").insertAdjacentHTML("beforeend",'<p style="margin:12px 0 4px"><b>Por categoría</b> (30 días)</p>'+t.map(function(v,i){return i||v?bar(CE[i]||"Sin categoría",v,mx):""}).join(""))};
+
+/* ---- deshacer al borrar ---- */
+var ut=document.createElement("div");ut.id="ut";ut.hidden=true;ut.setAttribute("role","status");ut.innerHTML='<span></span><button type="button">Deshacer</button>';document.body.appendChild(ut);
+var del=null,utt;
+document.getElementById("goals").addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-del]");if(!b)return;e.stopImmediatePropagation();var id=+b.getAttribute("data-del"),i=S.goals.findIndex(function(x){return x.id===id});if(i<0)return;var g=S.goals.splice(i,1)[0];if(S.pend)delete S.pend[id];if(S.timer&&S.timer.id===id)S.timer=null;del={g:g,i:i};save();render();ut.firstChild.textContent="Meta borrada: "+g.t;ut.hidden=false;clearTimeout(utt);utt=setTimeout(function(){ut.hidden=true;del=null},7000)},true);
+ut.querySelector("button").onclick=function(){if(!del)return;S.goals.splice(Math.min(del.i,S.goals.length),0,del.g);del=null;ut.hidden=true;save();render();tst("Meta recuperada ✅")};
+
+/* ---- reiniciar -> bienvenida otra vez ---- */
+document.getElementById("reset").addEventListener("click",function(){setTimeout(function(){if(!S.welcomed&&!document.querySelector('[aria-label="Bienvenida"]'))welcome()},120)});
+
+/* ---- perro en tienda y bienvenida ---- */
+if(!SHOP.some(function(x){return x[0]==="p5"})){var ix=SHOP.findIndex(function(x){return x[0]==="p4"});SHOP.splice(ix+1,0,["p5","Perrito 🐶",50,"pet","🐶"])}
+var wo=document.querySelector('[aria-label="Bienvenida"]');if(wo){wo.remove();welcome()}
+try{extras()}catch(e){}
+
+/* ---- logros ocultos ---- */
+function hid(id,name,em,fn){var a=[id,name,em,fn];Object.defineProperty(a,1,{get:function(){return S.ach[id]?name:"Logro oculto"}});Object.defineProperty(a,2,{get:function(){return S.ach[id]?em:"❓"}});ACH.push(a)}
+function H(f){return(S.history||[]).some(function(r){return f(new Date(r.ts))})}
+hid("h1","Madrugador/a","🌅",function(){return H(function(d){return d.getHours()>=5&&d.getHours()<7})});
+hid("h2","Noctámbula/o","🦉",function(){return H(function(d){return d.getHours()>=23||d.getHours()<4})});
+hid("h3","Mimosa/o","💗",function(){return(S.pats||0)>=50});
+hid("h4","Coleccionista","🛍️",function(){return Object.keys(S.own||{}).length>=8});
+hid("h5","Un mes seguido","🏔️",function(){return(S.best||0)>=30});
+hid("h6","Mejor amigo","🐶",function(){return S.pet==="🐶"});
+hid("h7","Cazamariposas","🦋",function(){return(S.bfBest||0)>=12});
+hid("h8","Noche de brujas","🎃",function(){return H(function(d){return(d.getMonth()===9&&d.getDate()>=20)||(d.getMonth()===10&&d.getDate()<=2)})});
+hid("h9","Navidad verde","🎄",function(){return H(function(d){return d.getMonth()===11&&d.getDate()>=24&&d.getDate()<=25})});
+hid("h10","Domingo de jardín","☀️",function(){return H(function(d){return d.getDay()===0})});
+hid("h11","Primavera florecida","🌷",function(){return H(function(d){return(d.getMonth()===8&&d.getDate()>=21)||(d.getMonth()===9&&d.getDate()<20)})});
+setInterval(function(){try{checkAch()}catch(e){}},6000);
+
+/* ---- barra de mascota: pelota, comida, truco, mariposas ---- */
+var bar2=document.createElement("div");bar2.className="petbar";
+bar2.innerHTML='<button type="button" id="pbBall">🎾 Tirar pelota</button><button type="button" id="pbFeed">🍎 Dar de comer</button><button type="button" id="pbTrick">🤸 Truco</button><button type="button" id="pbBf">🎮 Mini juegos</button>';
+document.querySelector(".vista").insertAdjacentElement("afterend",bar2);
+function evo(){var b=Math.max(S.best||0,curStreak());return b>=30?4:b>=14?3:b>=7?2:b>=3?1:0}
+var EVN=["cría","joven","con brillo ✨","con corona 👑","legendaria 🌟"];
+function mini(){var p=document.getElementById("pet"),has=!!S.pet,e=evo();["pbBall","pbFeed"].forEach(function(i){document.getElementById(i).hidden=!has});document.getElementById("pbTrick").hidden=!(has&&e>=1);
+if(p){p.dataset.evo=e;if(has&&e>(S.evo||0)&&S.evo!==undefined)tst("🐾 ¡Tu mascota evolucionó: "+EVN[e]+"!");if(S.evo!==e){S.evo=e;saveLocal()}}}
+var _r=render;render=function(){var r=_r.apply(this,arguments);try{decorate();mini()}catch(e){}return r};
+document.getElementById("pbBall").onclick=function(){document.getElementById("tb").click()};
+document.getElementById("pbTrick").onclick=function(){var p=document.getElementById("pet"),c=evo()>=2&&Math.random()<.5?"spin":"jump";p.classList.add(c);setTimeout(function(){p.classList.remove(c)},1100);tst("🤸 ¡Truco!")};
+
+/* comer y masticar */
+var busy=0,LF="",FD={"🐶":["🦴","🍖","🥩","🥓"],"🐱":["🐟","🥛","🍤","🐠"],"🐸":["🪰","🦗","🐛","🪱"],"🐢":["🥬","🍓","🥒","🍉"],"🐞":["🍃","🌿","🍎","🍯"],"🐰":["🥕","🥬","🍎","🌽"],"🦄":["🌈","🍬","🍓","🧁"]};
+function neg(p){return /scaleX\(-1\)/.test(p.firstChild.style.transform)}
+document.getElementById("pbFeed").onclick=function(){var pet=document.getElementById("pet"),y=document.getElementById("yard");if(busy||!S.pet||!y||pet.hidden||!pet.firstChild||!pet.firstChild.getBoundingClientRect)return;if(isNight()){tst("Shhh… está durmiendo 💤");return}
+busy=1;var pw=pet.firstChild.getBoundingClientRect(),o=y.getBoundingClientRect(),hx=pw.left-o.left+pw.width*(neg(pet)?.2:.78),hy=pw.top-o.top+pw.height*.5-14,f=document.createElement("span");
+f.className="fd";var ar=FD[S.pet]||["🍖"],pk;do{pk=ar[rnd(ar.length)]}while(pk===LF&&ar.length>1);LF=pk;f.textContent=pk;f.style.left=(hx-13)+"px";f.style.top="0px";y.appendChild(f);
+f.animate([{transform:"translateY(8px)"},{transform:"translateY("+hy+"px) rotate(200deg)"}],{duration:650,easing:"cubic-bezier(.5,0,1,.6)",fill:"forwards"}).onfinish=function(){pet.classList.add("eat");var T="translateY("+hy+"px) scale(";
+f.animate([{transform:T+"1)"},{transform:T+".65)",offset:.4},{transform:T+".3)",offset:.75},{transform:T+"0)"}],{duration:2400,fill:"forwards"}).onfinish=function(){f.remove();pet.classList.remove("eat");busy=0;
+if(Date.now()-(S.fed||0)>108e5){S.fed=Date.now();S.coins=(S.coins||0)+1;save();render();tst("😋 ¡Rico "+LF+"! +1 moneda")}else tst("😋 ¡Ñam ñam "+LF+"!")}}};
+
+/* mano al acariciar */
+document.getElementById("pet").addEventListener("pointerdown",function(){var pet=this,y=document.getElementById("yard");if(!S.pet||pet.hidden||!pet.firstChild||!y||!pet.firstChild.getBoundingClientRect)return;var old=y.querySelector(".hand");if(old)old.remove();var pw=pet.firstChild.getBoundingClientRect(),o=y.getBoundingClientRect(),h=document.createElement("span");h.className="hand";h.textContent="🖐️";h.style.left=(pw.left-o.left+pw.width*(neg(pet)?.2:.74)-12)+"px";h.style.top=(pw.top-o.top+pw.height*.05)+"px";y.appendChild(h);setTimeout(function(){h.remove()},1300)});
+
+/* ---- mini-juegos ---- */
+function left(id){var m=S.mg=S.mg||{};if(m.d!==today()){m.d=today();m.n={}}return 3-(m.n[id]||0)}
+function useP(id){left(id);S.mg.n[id]=(S.mg.n[id]||0)+1;S.mgTot=(S.mgTot||0)+1;save()}
+function shell(t,h,cls){var tm=[],o=modal('<h2 style="margin:0">'+t+'</h2><p class="sub" id="mgt" style="margin:4px 0">'+h+'</p><div class="'+cls+'" id="mgb"></div><button class="bw" id="bfx">Salir</button>');
+o.tm=tm;o.stop=function(){tm.forEach(function(x){clearInterval(x);clearTimeout(x)})};o.querySelector("#bfx").onclick=function(){o.stop();o.remove()};return o}
+function boosted(c){return S.boost&&S.boost>Date.now()?c*2:c}
+function pay(o,msg,c){o.stop();c=boosted(c);S.coins=(S.coins||0)+c;save();render();o.querySelector("#mgb").innerHTML='<p style="text-align:center;margin:80px 10px;font-size:20px">'+msg+'<br>+'+c+' monedas 💰</p>'}
+function clock(o,sec,label,fin){var t=sec,e=o.querySelector("#mgt"),iv=setInterval(function(){t--;e.textContent=t+" s · "+label();if(t<=0){clearInterval(iv);fin()}},1000);o.tm.push(iv);e.textContent=sec+" s · "+label()}
+function rnd(n){return Math.floor(Math.random()*n)}
+function gBf(){var o=shell("Atrapá mariposas 🦋","","bfa"),a=o.querySelector("#mgb"),sc=0,bs=[],i;
+function mv(x){x.style.left=Math.random()*(a.clientWidth-48)+"px";x.style.top=Math.random()*(a.clientHeight-48)+"px"}
+for(i=0;i<4;i++){var x=document.createElement("button");x.type="button";x.textContent="🦋";x.setAttribute("aria-label","Mariposa");x.onclick=function(){sc++;if(navigator.vibrate&&!S.calm)try{navigator.vibrate(8)}catch(e){}mv(this)};a.appendChild(x);bs.push(x);mv(x)}
+o.tm.push(setInterval(function(){bs.forEach(function(q){if(Math.random()<.6)mv(q)})},900));
+clock(o,20,function(){return sc+" atrapadas"},function(){S.bfBest=Math.max(S.bfBest||0,sc);pay(o,"¡Atrapaste "+sc+"!",Math.min(15,Math.floor(sc/2)))})}
+function gMem(){var o=shell("Memoria de plantitas 🧠","Encontrá las 6 parejas","mgb"),a=o.querySelector("#mgb"),E=["🌷","🌻","🌵","🍀","🌹","🍄"],d=E.concat(E).sort(function(){return Math.random()-.5}),op=[],mv=0,ok=0,lock=0,t=o.querySelector("#mgt");
+a.style.display="grid";a.style.gridTemplateColumns="repeat(4,1fr)";a.style.gap="6px";a.style.padding="6px";
+d.forEach(function(e){var b=document.createElement("button");b.type="button";b.className="mc";b.textContent="❓";b.setAttribute("aria-label","Carta");
+b.onclick=function(){if(lock||b.disabled||op.indexOf(b)>=0)return;b.textContent=e;op.push(b);if(op.length<2)return;mv++;t.textContent="Movimientos: "+mv;
+if(op[0].textContent===op[1].textContent){op.forEach(function(x){x.disabled=true;x.style.background="var(--bg2)"});op=[];if(++ok===6){var c=Math.max(3,Math.min(15,18-mv));o.tm.push(setTimeout(function(){pay(o,"¡Lo lograste en "+mv+" movimientos!",c)},500))}}
+else{lock=1;o.tm.push(setTimeout(function(){op.forEach(function(x){x.textContent="❓"});op=[];lock=0},700))}};a.appendChild(b)})}
+function gWat(){var o=shell("Regar contra reloj 💧","Tocá las plantas con sed","mgb"),a=o.querySelector("#mgb"),sc=0,ps=[],i;
+a.style.display="grid";a.style.gridTemplateColumns="repeat(3,1fr)";a.style.gap="6px";a.style.padding="6px";
+for(i=0;i<9;i++){var b=document.createElement("button");b.type="button";b.className="mc";b.textContent="🌱";b.dataset.t="0";b.setAttribute("aria-label","Maceta");
+b.onclick=function(){if(this.dataset.t!=="1")return;var x=this;x.dataset.t="0";x.textContent="💦";sc++;o.tm.push(setTimeout(function(){if(x.dataset.t==="0")x.textContent="🌱"},300))};ps.push(b);a.appendChild(b)}
+o.tm.push(setInterval(function(){var b=ps[rnd(9)];if(b.dataset.t==="1")return;b.dataset.t="1";b.textContent="🥀";o.tm.push(setTimeout(function(){if(b.dataset.t==="1"){b.dataset.t="0";b.textContent="🌱"}},1300))},600));
+clock(o,20,function(){return sc+" regadas"},function(){pay(o,"¡Regaste "+sc+" plantas!",Math.min(15,Math.floor(sc*.8)))})}
+function gFru(){var o=shell("Lluvia de frutas 🍓","Atrapá frutas y esquivá las orugas 🐛","mgb"),a=o.querySelector("#mgb"),sc=0,F=["🍎","🍊","🍋","🍇","🍓","🍉"];
+a.style.background="linear-gradient(#bfe9ff,#fff1f7)";
+o.tm.push(setInterval(function(){var bad=Math.random()<.2,b=document.createElement("button");b.type="button";b.className="bfl";b.textContent=bad?"🐛":F[rnd(6)];b.setAttribute("aria-label",bad?"Oruga":"Fruta");
+b.style.left=Math.random()*(a.clientWidth-48)+"px";b.style.top="-50px";b.style.transition="top 2.4s linear";a.appendChild(b);
+b.onclick=function(){sc=bad?Math.max(0,sc-2):sc+1;b.remove()};
+requestAnimationFrame(function(){requestAnimationFrame(function(){b.style.top=a.clientHeight+"px"})});o.tm.push(setTimeout(function(){b.remove()},2500))},480));
+clock(o,20,function(){return sc+" puntos"},function(){pay(o,"¡Sumaste "+sc+" puntos!",Math.min(15,Math.floor(sc*.6)))})}
+var AC2;function beep(i){if(S.mute||S.calm)return;try{AC2=AC2||new(window.AudioContext||window.webkitAudioContext)();var o=AC2.createOscillator(),g=AC2.createGain(),t=AC2.currentTime;o.frequency.value=[392,494,587,659][i];g.gain.setValueAtTime(.08,t);g.gain.exponentialRampToValueAtTime(.001,t+.3);o.connect(g);g.connect(AC2.destination);o.start(t);o.stop(t+.32)}catch(e){}}
+function gSim(){var o=shell("Simon de colores 🎵","Mirá la secuencia y repetila","mgb"),a=o.querySelector("#mgb"),t=o.querySelector("#mgt"),C=["#ff5c8a","#5bc0eb","#ffd34d","#7bd88f"],bt=[],sq=[],ix=0,lock=1;
+a.style.display="grid";a.style.gridTemplateColumns="1fr 1fr";a.style.gap="8px";a.style.padding="8px";
+function lit(i,ms){bt[i].style.filter="brightness(1.7)";bt[i].style.transform="scale(.94)";beep(i);o.tm.push(setTimeout(function(){bt[i].style.filter="";bt[i].style.transform=""},ms))}
+function play(){lock=1;ix=0;sq.push(rnd(4));t.textContent="Ronda "+sq.length+" · mirá…";sq.forEach(function(s,k){o.tm.push(setTimeout(function(){lit(s,380)},700+k*600))});o.tm.push(setTimeout(function(){lock=0;t.textContent="Ronda "+sq.length+" · ¡tu turno!"},700+sq.length*600))}
+C.forEach(function(c,i){var b=document.createElement("button");b.type="button";b.style.cssText="border:0;border-radius:18px;background:"+c;b.setAttribute("aria-label","Color "+(i+1));
+b.onclick=function(){if(lock)return;lit(i,200);if(sq[ix]!==i){lock=1;var r=sq.length-1;pay(o,"Llegaste a la ronda "+r,Math.min(15,r*2));return}ix++;if(ix===sq.length)o.tm.push(setTimeout(play,700))};a.appendChild(b);bt.push(b)});
+play()}
+function gSem(){var o=shell("¿Dónde está la semilla? 🌰","Seguí la maceta con la semilla","mgb"),a=o.querySelector("#mgb"),t=o.querySelector("#mgt"),sl=[0,1,2],bt=[],sd=0,rd=0,sc=0,lock=1,i;
+function pos(){bt.forEach(function(b,i){b.style.left=(8+sl[i]*31)+"%"})}
+for(i=0;i<3;i++){var b=document.createElement("button");b.type="button";b.className="mc";b.style.cssText="position:absolute;top:80px;width:26%;height:96px;font-size:44px;transition:left .35s";b.textContent="🪴";b.setAttribute("aria-label","Maceta");
+(function(k){b.onclick=function(){if(lock)return;lock=1;bt[sd].textContent="🌰";if(k===sd){sc++;t.textContent="¡Bien! "+sc+" de "+rd}else t.textContent="Era esa 🌰";o.tm.push(setTimeout(next,1200))}})(i);bt.push(b);a.appendChild(b)}
+pos();
+function next(){if(rd===5){pay(o,"Acertaste "+sc+" de 5",Math.min(15,sc*3));return}rd++;sd=rnd(3);bt.forEach(function(b){b.textContent="🪴"});bt[sd].textContent="🌰";t.textContent="Ronda "+rd+" de 5 · memorizá…";
+o.tm.push(setTimeout(function(){bt[sd].textContent="🪴";var n=3+rd*2,k=0,iv=setInterval(function(){var x=rnd(3),y=(x+1+rnd(2))%3,tmp=sl[x];sl[x]=sl[y];sl[y]=tmp;pos();if(++k>=n){clearInterval(iv);lock=0;t.textContent="Ronda "+rd+" de 5 · ¿dónde está?"}},500);o.tm.push(iv)},1100))}
+next()}
+function gTTT(){var o=shell("Ta-te-ti ❌⭕","Vos sos ❌, la compu es ⭕","mgb"),a=o.querySelector("#mgb"),bd=[0,0,0,0,0,0,0,0,0],bt=[],end=0,i,L=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+a.style.display="grid";a.style.gridTemplateColumns="repeat(3,1fr)";a.style.gap="6px";a.style.padding="6px";
+function win(p){return L.some(function(l){return l.every(function(j){return bd[j]===p})})}
+function fin(){if(win(1)){end=1;pay(o,"¡Ganaste! 🎉",12);return 1}if(win(2)){end=1;pay(o,"Ganó la compu 😅",1);return 1}if(bd.indexOf(0)<0){end=1;pay(o,"¡Empate!",5);return 1}return 0}
+function mv(j,p){bd[j]=p;bt[j].textContent=p===1?"❌":"⭕";bt[j].disabled=true}
+function ai(){if(end)return;var e=[],j,c;for(j=0;j<9;j++)if(!bd[j])e.push(j);
+function find(p){var r=-1;e.forEach(function(q){bd[q]=p;if(win(p))r=q;bd[q]=0});return r}
+c=find(2);if(c<0)c=find(1);if(c<0)c=bd[4]?e[rnd(e.length)]:4;mv(c,2);fin()}
+for(i=0;i<9;i++){var b=document.createElement("button");b.type="button";b.className="mc";b.setAttribute("aria-label","Casilla");(function(k){b.onclick=function(){if(end||bd[k])return;mv(k,1);if(!fin())o.tm.push(setTimeout(ai,350))}})(i);bt.push(b);a.appendChild(b)}}
+function gMath(){var o=shell("Cuenta rápida 🧮","Elegí la respuesta correcta","mgb"),a=o.querySelector("#mgb"),sc=0,ans=0;a.style.padding="10px";
+function q(){var x=2+rnd(9),y=2+rnd(9),op=rnd(3),r=op===0?x+y:op===1?x*y:Math.abs(x-y),s=op===0?x+" + "+y:op===1?x+" × "+y:Math.max(x,y)+" − "+Math.min(x,y),ch=[r];
+while(ch.length<4){var c=r+rnd(11)-5;if(c>=0&&ch.indexOf(c)<0)ch.push(c)}ch.sort(function(){return Math.random()-.5});ans=r;
+a.innerHTML='<p style="text-align:center;font-size:34px;margin:10px 0;color:#1d3b5a">'+s+' = ?</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'+ch.map(function(c){return '<button type="button" class="mc" style="height:60px;font-size:24px" data-c="'+c+'">'+c+'</button>'}).join("")+'</div>'}
+a.onclick=function(e){var c=e.target.getAttribute("data-c");if(c===null)return;if(+c===ans)sc++;else sc=Math.max(0,sc-1);q()};
+q();clock(o,25,function(){return sc+" puntos"},function(){a.onclick=null;pay(o,"¡Sumaste "+sc+"!",Math.min(15,Math.floor(sc*1.2)))})}
+var MG=[["bf","🦋","Atrapar mariposas","Tocá las mariposas",gBf],["mem","🧠","Memoria de plantitas","Encontrá las parejas",gMem],["wat","💧","Regar contra reloj","Regá las plantas con sed",gWat],["fru","🍓","Lluvia de frutas","Atrapá frutas, esquivá orugas",gFru],["sim","🎵","Simon de colores","Memorizá la secuencia",gSim],["sem","🌰","¿Dónde está la semilla?","Seguí la maceta",gSem],["ttt","❌","Ta-te-ti","Ganale a la compu",gTTT],["mat","🧮","Cuenta rápida","Calculá contra reloj",gMath]];
+document.getElementById("pbBf").onclick=function(){var o=modal('<h2 style="margin:0">Mini juegos 🎮</h2><p class="sub">3 partidas por juego cada día. Ganás monedas.</p><div id="mgl"></div><button class="bw" id="mgx">Cerrar</button>'),l=o.querySelector("#mgl");
+l.innerHTML=MG.map(function(g){var n=left(g[0]);return '<div class="g"><span style="font-size:28px">'+g[1]+'</span><label>'+g[2]+'<br><small>'+g[3]+' · quedan '+n+'</small></label><button class="tm'+(n?'':' off')+'" data-g="'+g[0]+'">Jugar</button></div>'}).join("");
+l.onclick=function(e){var id=e.target.getAttribute("data-g");if(!id)return;var g=MG.filter(function(x){return x[0]===id})[0];if(!left(id)){tst("Hoy ya jugaste 3 veces, ¡volvé mañana!");return}useP(id);o.remove();g[4]()};
+o.querySelector("#mgx").onclick=function(){o.remove()}};
+
+/* ---- resumen del domingo ---- */
+var SUG=[null,["Estudiar 20 minutos",20],["Caminar 15 minutos",15],["Ordenar 10 minutos",10],["Escribir en mi diario",5]];
+function weekly(){var n=new Date();if(n.getDay()!==0||S.wkSum===today()||!(S.history||[]).length)return;S.wkSum=today();save();
+var t=catTotals(7),ci=1,i;for(i=2;i<5;i++)if(t[i]<t[ci])ci=i;var s=SUG[ci];
+var o=modal('<div style="font-size:46px;text-align:center">📊</div><h2 style="margin:4px 0">Tu semana</h2><p>Regaste <b>'+RS.d+'</b> '+(RS.d==1?"día":"días")+', sumaste <b>'+RS.a+'</b> aguas y <b>'+RS.m+'</b> minutos.</p><p>Meta sugerida para la próxima semana, de <b>'+CN[ci]+'</b>, la que menos tocaste:<br><b>'+s[0]+'</b> (3 veces)</p><button class="bw" id="wad">➕ Agregarla</button><button class="tm" id="wno" style="width:100%;margin-top:8px">Ahora no</button>');
+o.querySelector("#wad").onclick=function(){S.goals.push({id:Date.now(),t:s[0],min:s[1],f:2,dd:[],n:3,c:ci});save();render();o.remove();tst("Meta agregada ✅")};o.querySelector("#wno").onclick=function(){o.remove()}}
+setTimeout(weekly,3000);
+
+/* ---- PDF de metas y estadisticas (claro u oscuro) ---- */
+var sg=document.getElementById("sgs"),pb=document.createElement("button");pb.className="bw";pb.id="pdfm";pb.textContent="📄 PDF de metas y estadísticas";pb.hidden=!window.jspdf;sg.lastElementChild.appendChild(pb);
+pb.onclick=function(){try{var J=window.jspdf.jsPDF,d=new J({unit:"mm",format:"a4"}),dark=isDark(),
+T=dark?{bg:"#0c1230",surf:"#162052",ink:"#e4ecff",mute:"#8fa3e0",acc:"#6aa8ff",line:"#2a3a85",on:"#0c1230"}:{bg:"#ffe3ee",surf:"#fff8fb",ink:"#5a2140",mute:"#a0668a",acc:"#ec4a95",line:"#ffc2da",on:"#ffffff"},
+y=28,tot={},lim=Date.now()-30*DAY,ct=catTotals(30),all=0;
+Object.keys(S.cnt||{}).forEach(function(k){var p=k.split("-");if(new Date(+p[0],p[1]-1,+p[2]).getTime()>=lim)Object.keys(S.cnt[k]).forEach(function(id){tot[id]=(tot[id]||0)+S.cnt[k][id];all+=S.cnt[k][id]})});
+pdfPage(d,T,dark);d.setFont("helvetica","bold");d.setFontSize(22);tc(d,T.ink);d.text("Mis metas y estadísticas",15,y);y+=8;
+var n=new Date();d.setFont("helvetica","normal");d.setFontSize(10);tc(d,T.mute);d.text((S.name||"Plantita")+" · "+n.getDate()+"/"+(n.getMonth()+1)+"/"+n.getFullYear()+" · últimos 30 días",15,y);y+=8;
+[[all,"metas cumplidas"],[curStreak(),"racha actual"],[S.best||0,"mejor racha"],[(S.history||[]).length,"riegos"]].forEach(function(b,j){var x=15+j*46;fc(d,T.surf);dc(d,T.line);d.setLineWidth(.6);d.roundedRect(x,y,42,22,4,4,"FD");d.setFont("helvetica","bold");d.setFontSize(18);tc(d,T.acc);d.text(String(b[0]),x+5,y+12);d.setFont("helvetica","normal");d.setFontSize(9);tc(d,T.mute);d.text(b[1],x+5,y+18)});y+=34;
+function pg(){if(y>262){d.addPage();pdfPage(d,T,dark);y=25}}
+d.setFont("helvetica","bold");d.setFontSize(13);tc(d,T.ink);d.text("Metas",15,y);y+=8;
+S.goals.slice().sort(function(a,b){return(tot[b.id]||0)-(tot[a.id]||0)}).forEach(function(g){pg();var v=tot[g.id]||0,mx=Math.max(1,Math.max.apply(null,S.goals.map(function(q){return tot[q.id]||0})));d.setFont("helvetica","bold");d.setFontSize(10);tc(d,T.ink);d.text(String(g.t).slice(0,34),15,y);d.setFont("helvetica","normal");d.setFontSize(8);tc(d,T.mute);d.text(CN[g.c||0]+" · "+fq(g),15,y+4.5);fc(d,T.line);d.roundedRect(110,y-3.5,75,4.5,2,2,"F");if(v){fc(d,T.acc);d.roundedRect(110,y-3.5,Math.max(3,75*v/mx),4.5,2,2,"F")}d.setFontSize(10);tc(d,T.ink);d.text(String(v),189,y);y+=11});
+y+=4;pg();d.setFont("helvetica","bold");d.setFontSize(13);tc(d,T.ink);d.text("Por categoría",15,y);y+=8;var cm=Math.max(1,Math.max.apply(null,ct));
+ct.forEach(function(v,i){if(!i&&!v)return;pg();d.setFont("helvetica","normal");d.setFontSize(10);tc(d,T.ink);d.text(CN[i]+" ("+v+")",15,y);fc(d,T.line);d.roundedRect(75,y-3.5,110,4.5,2,2,"F");if(v){fc(d,T.acc);d.roundedRect(75,y-3.5,Math.max(3,110*v/cm),4.5,2,2,"F")}y+=8});
+dlSave("metas-plantita.pdf",d.output("blob"),"application/pdf").then(function(){say("PDF de metas listo 📄")}).catch(function(){})}catch(e){say("No se pudo crear el PDF.")}};
+
+/* ---- enlace de solo lectura del jardin ---- */
+function enc(o){return btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"")}
+function dec(s){s=s.replace(/-/g,"+").replace(/_/g,"/");while(s.length%4)s+="=";return JSON.parse(decodeURIComponent(escape(atob(s))))}
+var lb=document.createElement("button");lb.className="bw";lb.textContent="🔗 Copiar enlace de mi jardín";document.getElementById("gsec").lastElementChild.appendChild(lb);
+lb.onclick=function(){var g=S.garden||[],u=location.href.split("#")[0]+"#jardin="+enc({n:S.name||"Plantita",b:S.best||0,r:(S.history||[]).length,p:S.pet||"",g:g.slice(-24).map(function(t){return[t.name,t.tp||"",t.date]})});copyTxt(u).then(function(){say("Enlace copiado: es de solo lectura, ideal para tu portfolio 🔗")}).catch(function(){say("No pude copiar. Probá de nuevo.")})};
+var hm=location.hash.match(/^#jardin=([\w-]+)/);
+if(hm)setTimeout(function(){try{var v=dec(hm[1]),w=document.querySelector('[aria-label="Bienvenida"]');if(w)w.remove();
+var o=modal('<div style="font-size:46px;text-align:center">🌳</div><h2 style="margin:4px 0">Jardín de '+esc(v.n)+'</h2><p class="sub">'+(v.p||"")+" "+v.g.length+(v.g.length==1?" árbol":" árboles")+' · mejor racha '+(+v.b||0)+' · '+(+v.r||0)+' riegos</p><div class="goals">'+v.g.map(function(t){return'<div class="g"><span style="font-size:26px">'+tEmoji(t[1])+'</span><label>'+esc(t[0])+'<br><small>'+esc(t[2])+'</small></label></div>'}).join("")+'</div><button class="bw" id="jx">Crear mi propia plantita</button>');
+o.querySelector("#jx").onclick=function(){history.replaceState(null,"",location.href.split("#")[0]);o.remove()}}catch(e){}},300);
+
+try{render()}catch(e){}
+})();
+</script>
+<style>
+.subs{padding:4px 0 10px 8px;border-bottom:1px solid var(--line);font-size:14px}
+.stage.b-rosa .vista{background:linear-gradient(#ffc2e0,#fff0f7);color:#7a1f55}
+.stage.b-algodon .vista{background:linear-gradient(#ffd1ec,#d9e8ff 60%,#ffe0f0 60%);color:#6b2a5a}
+.stage.b-sakura .vista{background:linear-gradient(#ffe0ec,#ffb7d0 60%,#e58fb0 60%);color:#5a1f3d}
+.stage.b-corazones .vista{background:linear-gradient(#ff8fb8,#ffc2da);color:#5a1740}
+.stage.b-unicornio .vista{background:linear-gradient(#ffd6f5,#d6e8ff 50%,#e9d6ff);color:#5a2a80}
+.stage.b-atrosa .vista{background:linear-gradient(#ff8fb8,#ffc78f 55%,#a04a7a 55%);color:#4a1a3a}
+.stage.b-neon .vista{background:linear-gradient(#1a0533,#6b1b8f 60%,#ff2d95 60%,#ff2d95 62%,#2a0a4a 62%);color:#fff}
+.stage.b-aurora .vista{background:linear-gradient(#050a24,#0f3b4a 50%,#2a1458);color:#fff}
+.stage.b-castillo .vista{background:linear-gradient(#ffd0e6,#fff1f7 55%,#9be08a 55%);color:#5a2140}
+</style>
+<script>/* mejoras v4: subtareas, categorias editables, escenarios rosas, tienda pro, eventos */
+(function(){
+function R(a,b){return a+Math.random()*(b-a)}
+function tst(t){var e=document.getElementById("gtoast");if(!e)return;e.textContent=t;e.classList.add("on");clearTimeout(tst.t);tst.t=setTimeout(function(){e.classList.remove("on")},2800)}
+function byId(id){return S.goals.filter(function(x){return String(x.id)===String(id)})[0]}
+var CE=["Sin categoría","📚 Estudio","💪 Salud","🏠 Casa","🎨 Personal"],OPN={},gl=document.getElementById("goals");
+
+/* ---- subtareas ---- */
+function sbHTML(g){var h="";(g.sub||[]).forEach(function(x,i){var on=x.d===today();h+='<div style="display:flex;align-items:center;gap:6px;min-height:36px"><label style="display:flex;align-items:center;gap:8px;flex:1;margin:0"><input type="checkbox" data-sbc="'+i+'" data-g="'+g.id+'" style="width:22px;height:22px;accent-color:var(--acc)"'+(on?" checked":"")+'><span style="'+(on?"text-decoration:line-through;opacity:.7":"")+'">'+esc(x.t)+'</span></label><button type="button" class="x" style="min-width:36px;height:36px;font-size:16px" data-sbx="'+i+'" data-g="'+g.id+'" aria-label="Quitar subtarea">×</button></div>'});
+return h+'<div style="display:flex;gap:6px;margin-top:4px"><input class="ei sbi" data-g="'+g.id+'" placeholder="Nueva subtarea" maxlength="40" style="flex:1;min-width:0"><button type="button" class="tm" data-sba="'+g.id+'">+</button></div><p class="sub" style="margin:4px 0 0;font-size:12px">Al completarlas todas sumás 1 agua. Se reinician cada día.</p>'}
+function dec2(){gl.querySelectorAll(".g").forEach(function(r){var b=r.querySelector("[data-id]"),ok=r.querySelector("[data-ok]");
+if(b){var g=byId(b.getAttribute("data-id"));if(!g)return;var n=(g.sub||[]).length,d=(g.sub||[]).filter(function(x){return x.d===today()}).length,t=document.createElement("button");t.className="x";t.type="button";t.setAttribute("data-sbt",g.id);t.setAttribute("aria-label","Subtareas");t.style.cssText="min-width:44px;font-size:14px";t.textContent="☰"+(n?" "+d+"/"+n:"");r.insertBefore(t,r.querySelector("[data-e]"));
+if(OPN[g.id]){var s=document.createElement("div");s.className="subs";s.innerHTML=sbHTML(g);r.insertAdjacentElement("afterend",s)}}
+else if(ok&&r.querySelector("#ef")&&!r.querySelector("#ec")){var g2=byId(ok.getAttribute("data-ok")),e=document.createElement("select");e.id="ec";e.className="ei gsel";e.setAttribute("aria-label","Categoría");e.innerHTML=CE.map(function(c,i){return '<option value="'+i+'"'+((g2&&g2.c||0)===i?" selected":"")+'>'+c+'</option>'}).join("");r.querySelector("#ef").insertAdjacentElement("afterend",e)}})}
+function addSub(id){var i=gl.querySelector('.sbi[data-g="'+id+'"]'),v=i&&i.value.trim(),g=byId(id);if(!v||!g)return;(g.sub=g.sub||[]).push({t:v,d:""});save();render();var n=gl.querySelector('.sbi[data-g="'+id+'"]');if(n)n.focus()}
+gl.addEventListener("click",function(e){var T=e.target,k;
+if((k=T.getAttribute("data-sbt"))){OPN[k]=!OPN[k];render();return}
+if((k=T.getAttribute("data-sba"))){addSub(k);return}
+if((k=T.getAttribute("data-sbx"))!==null){var g=byId(T.getAttribute("data-g"));if(g){g.sub.splice(+k,1);save();render()}return}
+if((k=T.getAttribute("data-ok"))){var q=byId(k),s=document.getElementById("ec");if(q&&s)q.c=+s.value}},true);
+gl.addEventListener("keydown",function(e){if(e.key==="Enter"&&e.target.classList.contains("sbi"))addSub(e.target.getAttribute("data-g"))});
+gl.addEventListener("change",function(e){var T=e.target,i=T.getAttribute("data-sbc");if(i===null)return;var g=byId(T.getAttribute("data-g"));if(!g)return;g.sub[+i].d=T.checked?today():"";if(T.checked)S.sbn=(S.sbn||0)+1;save();
+if(g.sub.every(function(x){return x.d===today()})&&g.sd!==today()){g.sd=today();save();mark(g.id,true);tst("☑️ ¡Subtareas completas! +1 agua")}else render()});
+
+/* ---- decoraciones ---- */
+function cl(n,f){var h="",i;for(i=0;i<n;i++)h+='<span class="cld" style="top:'+R(3,30)+'%;font-size:'+R(26,46)+'px;animation-duration:'+R(34,60)+'s;animation-delay:-'+R(0,45)+'s;'+(f||"")+'">☁️</span>';return h}
+function fl(e,n,c){var h="",i;for(i=0;i<n;i++)h+='<span class="'+c+'" style="left:'+R(0,92)+'%;top:'+(c==="brd"?R(8,40)+"%":"")+';animation-duration:'+R(7,13)+'s;animation-delay:-'+R(0,10)+'s">'+(Array.isArray(e)?e[i%e.length]:e)+'</span>';return h}
+function sr(n,cs){var h="",i,c;for(i=0;i<n;i++){c=cs[i%cs.length];h+='<span class="ff" style="left:'+R(0,96)+'%;top:'+R(0,70)+'%;width:4px;height:4px;background:'+c+';box-shadow:0 0 8px 3px '+c+';animation-delay:-'+R(0,4)+'s"></span>'}return h}
+var PK="filter:sepia(1) saturate(4) hue-rotate(290deg);",
+NBD={rosa:function(){return cl(4,PK)+fl("✨",6,"pt")},algodon:function(){return cl(5,PK)+fl("🍬",5,"pt")},sakura:function(){return fl(["🌸","🌸","🌺"],14,"pt")},corazones:function(){return fl(["💗","💖","💕"],9,"bln")},
+unicornio:function(){return '<span class="pln">🌈</span>'+fl("🦄",1,"brd")+sr(8,["#fff","#ffd6f5"])},atrosa:function(){return '<span class="sun" style="top:42%;right:18%;font-size:48px">🌅</span>'+fl("🐦",2,"brd")+cl(2,PK)},
+neon:function(){return sr(16,["#ff2d95","#5ee0ff"])+'<span class="shs" style="left:8%;top:6%"></span>'},aurora:function(){return '<span class="ray" style="left:12%;background:linear-gradient(rgba(120,255,200,.55),transparent)"></span><span class="ray" style="left:42%;background:linear-gradient(rgba(255,120,200,.5),transparent);animation-delay:-2s"></span><span class="ray" style="left:70%;background:linear-gradient(rgba(140,160,255,.5),transparent);animation-delay:-4s"></span>'+sr(12,["#fff"])},
+castillo:function(){return '<span class="flw" style="right:2%;font-size:64px">🏰</span>'+cl(3,PK)+fl("🦋",2,"brd")}};
+function evNow(){var d=new Date(),k=(d.getMonth()+1)*100+d.getDate();if(k>=1229||k<=102)return"ny";if(k>=1215||k<=106)return"xmas";if(k>=1020&&k<=1102)return"hw";if(k>=208&&k<=215)return"vd";if(k>=718&&k<=720)return"fr";return""}
+var EVD={hw:function(){return fl("🦇",3,"brd")+'<span class="pln">👻</span><span class="flw" style="left:3%;font-size:32px">🎃</span><span class="flw" style="right:3%;font-size:32px">🎃</span>'},
+xmas:function(){return fl("❄️",10,"pt")+'<span class="flw" style="left:3%;font-size:44px">🎄</span><span class="pln">⭐</span>'},
+vd:function(){return fl(["💗","💘","💞"],7,"bln")+'<span class="flw" style="left:4%">🌹</span><span class="flw" style="right:4%">🌹</span>'},
+ny:function(){var h="",C=["#ff5c8a","#ffd34d","#5ee0ff","#7bd88f"],i;for(i=0;i<18;i++)h+='<span class="cf" style="left:'+R(0,98)+'%;background:'+C[i%4]+';animation-duration:'+R(3.5,7)+'s;animation-delay:-'+R(0,7)+'s"></span>';return h+'<span class="pln">🎆</span><span class="moon">🎇</span>'},
+fr:function(){return fl(["🎈","💗","🤝"],6,"bln")+'<span class="pln">🤝</span>'}};
+function layer(cls,z,key,html){var v=document.querySelector(".vista"),e=v.querySelector("."+cls);if(!e){e=document.createElement("div");e.className=cls;e.setAttribute("aria-hidden","true");e.style.cssText="position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:"+z;v.insertBefore(e,v.firstChild)}if(e.dataset.k===key)return;e.dataset.k=key;e.innerHTML=S.calm?"":html()}
+function deco(){var b=S.bg||"",ev=evNow();layer("bgd",0,"b"+b+!!S.calm,NBD[b]||function(){return""});layer("evd",1,"e"+ev+!!S.calm,EVD[ev]||function(){return""})}
+
+/* ---- tienda: items pro, rosas, de evento ---- */
+TREE.algodon=["#ffb3d9","#ffffff"];TREE.magnolia=["#ff8fc0","#ffd1e6"];TREE.cristal=["#7fe0e0","#ffffff"];
+var _te=tEmoji;tEmoji=function(t){return{algodon:"🍬",magnolia:"🌺",cristal:"💎"}[t]||_te(t)};
+var NEW=[["pk1","Maceta rosa chicle 💗",25,"pot","#ff9ecb"],["pk2","Maceta fucsia",30,"pot","#e91e8c"],["pk3","Maceta rosa pastel",20,"pot","#ffc9de"],["pk4","Maceta rose gold ✨",90,"pot","#b76e79"],["pk5","Maceta rubí 💎",100,"pot","#c2185b"],["pr1","Maceta plateada",70,"pot","#b8c4d0"],["pr2","Maceta galaxia 🌌",120,"pot","#3b2a6b"],["pr3","Maceta turquesa",30,"pot","#2ec4b6"],
+["tiara","Tiara rosa 👸",80,"acc","acTiara"],["alas","Alas de hada 🧚",100,"acc","acWings"],["bufa","Bufanda rosa 🧣",40,"acc","acScarf"],["birrete","Birrete 🎓",60,"acc","acGrad"],["auri","Auriculares 🎧",70,"acc","acPhones"],
+["calab","Calabaza 🎃 (solo Halloween)",40,"acc","acPump"],["gorro","Gorro navideño 🎅 (solo Navidad)",40,"acc","acXmas"],["corazs","Corazones 💗 (solo San Valentín)",40,"acc","acHrts"],
+["t7","Árbol algodón de azúcar 🍬",80,"tree","algodon"],["t8","Magnolia rosa 🌺",90,"tree","magnolia"],["t9","Árbol de cristal 💎",110,"tree","cristal"],
+["bn1","Fondo: ciudad neón 🌃",70,"bg","neon"],["bn2","Fondo: aurora boreal 🌌",80,"bg","aurora"],["bn3","Fondo: castillo de cuento 🏰",90,"bg","castillo"]];
+NEW.forEach(function(x){if(!SHOP.some(function(s){return s[0]===x[0]}))SHOP.push(x)});
+var ORD={pot:0,acc:1,tree:2,bg:3,pet:4,cons:5};SHOP.sort(function(a,b){return ORD[a[3]]-ORD[b[3]]});
+var SE={calab:"hw",gorro:"xmas",corazs:"vd"};
+document.getElementById("shop").addEventListener("click",function(e){var id=e.target.getAttribute("data-s");if(id&&SE[id]&&!S.own[id]){var n=evNow();if(n!==SE[id]&&!(SE[id]==="xmas"&&n==="ny")){e.stopImmediatePropagation();tst("🎁 Solo se compra durante el evento")}}},true);
+var P=document.getElementById("plant"),ref=P.querySelector('ellipse[cx="78"][cy="190"]');
+ref.insertAdjacentHTML("beforebegin",'<g id="acTiara" style="display:none"><path d="M82 148 L86 132 L93 141 L100 128 L107 141 L114 132 L118 148 Z" fill="#ff9ecb" stroke="#e91e8c" stroke-width="2" stroke-linejoin="round"/><circle cx="100" cy="128" r="3" fill="#fff" stroke="#e91e8c" stroke-width="1.5"/></g><g id="acWings" style="display:none"><ellipse cx="44" cy="166" rx="15" ry="26" transform="rotate(-25 44 166)" fill="#ffd1e8" fill-opacity=".75" stroke="#ff8fc0" stroke-width="2"/><ellipse cx="156" cy="166" rx="15" ry="26" transform="rotate(25 156 166)" fill="#ffd1e8" fill-opacity=".75" stroke="#ff8fc0" stroke-width="2"/></g><g id="acScarf" style="display:none"><path d="M64 158 H136 L134 168 H66 Z" fill="#ff7fb5"/><path d="M118 167 L124 196 L136 192 L130 167 Z" fill="#ff5c9d"/></g><g id="acGrad" style="display:none"><path d="M76 142 L100 132 L124 142 L100 152 Z" fill="#2b2b3a"/><path d="M118 144 V160" stroke="#ffd34d" stroke-width="2.5"/><circle cx="118" cy="161" r="3" fill="#ffd34d"/></g><g id="acPhones" style="display:none"><path d="M58 172 Q58 136 100 136 Q142 136 142 172" fill="none" stroke="#2b2b3a" stroke-width="4"/><rect x="51" y="168" width="11" height="22" rx="5" fill="#ff4f8b"/><rect x="138" y="168" width="11" height="22" rx="5" fill="#ff4f8b"/></g><g id="acPump" style="display:none"><text x="124" y="206" font-size="34">🎃</text></g><g id="acXmas" style="display:none"><path d="M80 148 Q86 118 114 124 Q108 136 122 148 Z" fill="#e53935"/><rect x="78" y="144" width="46" height="9" rx="4.5" fill="#fff"/><circle cx="114" cy="124" r="5.5" fill="#fff"/></g><g id="acHrts" style="display:none"><text x="36" y="136" font-size="20">💗</text><text x="150" y="122" font-size="16">💖</text><text x="140" y="150" font-size="14">💕</text></g>');
+
+/* ---- escenarios rosas gratis en el selector ---- */
+var row=document.getElementById("bgp");
+[["rosa","🌸 Cielo rosa"],["algodon","🍬 Algodón de azúcar"],["sakura","🌸 Sakura"],["corazones","💗 Corazones"],["unicornio","🦄 Unicornio"],["atrosa","🌇 Atardecer rosa"]].forEach(function(b){var x=document.createElement("button");x.setAttribute("data-v",b[0]);x.setAttribute("aria-pressed","false");x.textContent=b[1];row.appendChild(x)});
+
+/* ---- logros ocultos nuevos ---- */
+function hid(id,name,em,fn){var a=[id,name,em,fn];Object.defineProperty(a,1,{get:function(){return S.ach[id]?name:"Logro oculto"}});Object.defineProperty(a,2,{get:function(){return S.ach[id]?em:"❓"}});ACH.push(a)}
+function H(f){return(S.history||[]).some(function(r){return f(new Date(r.ts))})}
+hid("h12","San Valentín","💘",function(){return H(function(d){return d.getMonth()===1&&d.getDate()>=8&&d.getDate()<=15})});
+hid("h13","Año nuevo, planta nueva","🎆",function(){return H(function(d){return(d.getMonth()===11&&d.getDate()>=29)||(d.getMonth()===0&&d.getDate()<=2)})});
+hid("h14","Día del amigo","🤝",function(){return H(function(d){return d.getMonth()===6&&d.getDate()>=18&&d.getDate()<=20})});
+hid("h15","Organizada/o","☑️",function(){return(S.sbn||0)>=20});
+hid("h16","Gamer","🎮",function(){return(S.mgTot||0)>=20});
+hid("h17","Fanática/o del rosa","💗",function(){return Object.keys(S.own||{}).filter(function(k){return k.indexOf("pk")===0}).length>=3});
+
+/* ---- integrar ---- */
+var _r=render;render=function(){var r=_r.apply(this,arguments);try{dec2();deco()}catch(e){}return r};
+var wo=document.querySelector('[aria-label="Bienvenida"]');if(wo){wo.remove();welcome()}
+try{render()}catch(e){}
+})();
+</script>
+<script>/* mejoras v5: mascotas nuevas en la tienda, potenciadores, logro */
+(function(){
+function tst(t){var e=document.getElementById("gtoast");if(!e)return;e.textContent=t;e.classList.add("on");clearTimeout(tst.t);tst.t=setTimeout(function(){e.classList.remove("on")},2800)}
+[["p6","Conejito 🐰",55,"pet","🐰"],["p7","Unicornio 🦄",120,"pet","🦄"]].forEach(function(x){if(!SHOP.some(function(s){return s[0]===x[0]}))SHOP.push(x)});
+var ORD={pot:0,acc:1,tree:2,bg:3,pet:4,cons:5};SHOP.sort(function(a,b){return ORD[a[3]]-ORD[b[3]]});
+function isB(){return S.boost&&S.boost>Date.now()}
+var bx=document.createElement("div");bx.id="boostbox";document.getElementById("shop").insertAdjacentElement("afterend",bx);
+function boxr(){var m=isB()?Math.ceil((S.boost-Date.now())/6e4):0;bx.innerHTML='<h3 style="margin:14px 0 4px;font-size:16px">Potenciadores ⚡</h3><div class="g"><label>Doble monedas 1 hora ⚡<br><small>'+(m?"Activo: quedan "+m+" min":"x2 en riegos y mini juegos")+'</small></label><button class="tm'+((S.coins||0)<50||m?" off":"")+'" data-bx="x2">'+(m?"Activo ✓":"Comprar 50 "+COIN)+'</button></div><div class="g"><label>Agüita extra 💧<br><small>Suma 2 aguas a la regadera ahora</small></label><button class="tm'+((S.coins||0)<30?" off":"")+'" data-bx="aw">Comprar 30 '+COIN+'</button></div>'}
+bx.onclick=function(e){var k=e.target.getAttribute("data-bx");if(!k)return;
+if(k==="x2"){if((S.coins||0)<50||isB())return;S.coins-=50;S.boost=Date.now()+36e5;tst("⚡ ¡Doble monedas por 1 hora!")}
+else{if((S.coins||0)<30)return;S.coins-=30;S.units=(S.units||0)+2;tst("💧 +2 aguas")}save();render()};
+var w=document.getElementById("water"),c0=0;
+w.addEventListener("click",function(){c0=S.coins||0},true);
+w.addEventListener("click",function(){var d=(S.coins||0)-c0;if(d>0&&isB()){S.coins+=d;save();render();tst("⚡ x2 monedas: +"+d*2)}});
+var a=["h18","Magia","🦄",function(){return S.pet==="🦄"}];Object.defineProperty(a,1,{get:function(){return S.ach.h18?"Magia":"Logro oculto"}});Object.defineProperty(a,2,{get:function(){return S.ach.h18?"🦄":"❓"}});ACH.push(a);
+var _r=render;render=function(){var r=_r.apply(this,arguments);try{boxr()}catch(e){}return r};
+var wo=document.querySelector('[aria-label="Bienvenida"]');if(wo){wo.remove();welcome()}
+try{render()}catch(e){}
 })();
 </script>
 </body>
