@@ -353,7 +353,7 @@ body.fc-on #pcan,body.fc-on #pstream,body.fc-on .drop{display:none}
 <button id="exp" class="bw" hidden>Exportar historial (CSV)</button>
 <button id="pdf" class="bw" hidden>Descargar PDF</button></section>
 <p id="sync" class="sub" style="text-align:center;font-size:13px;margin-top:18px">☁️ Conectando…</p>
-<div style="text-align:center"><button id="scr" class="tm">☁️ Activar sincronización</button> <button id="scb" class="tm">📋 Copiar respaldo</button>
+<div style="text-align:center"><button id="scr" class="tm">☁️ Activar sincronización</button> <button id="scb" class="tm">📋 Copiar respaldo</button> <button id="scd" class="tm">💾 Descargar respaldo</button> <button id="scf" class="tm">📂 Restaurar desde archivo</button><input type="file" id="scfi" accept=".txt,.json,text/plain,application/json" hidden>
 <div id="sjn" style="margin-top:8px"><input id="sci" class="ei" placeholder="Código o respaldo: pegalo acá" aria-label="Código de sincronización o respaldo" style="width:62%"> <button id="scj" class="tm">Conectar</button></div>
 <div id="sco" hidden><span class="sub">Tu código:</span><br><b id="scv" style="word-break:break-all"></b><br><button id="scc" class="tm" style="margin-top:6px">Copiar código</button> <button id="scx" class="tm">Desconectar</button></div></div>
 <button id="reset" class="tm" style="display:block;margin:14px auto 0">Reiniciar desde cero</button>
@@ -568,34 +568,46 @@ dlSave('plantita.ics',L,'text/calendar').then(function(){say('Abrí el archivo p
 var rtm;document.getElementById('reset').onclick=function(){var b=this;if(b.dataset.s!=='1'){b.dataset.s='1';b.textContent='¿Seguro? Se borra todo. Tocá de nuevo';rtm=setTimeout(function(){b.dataset.s='';b.textContent='Reiniciar desde cero'},5000);return}
 clearTimeout(rtm);b.dataset.s='';b.textContent='Reiniciar desde cero';S=fresh();try{localStorage.removeItem(KEY)}catch(e){}save();fillRt();fillDays();nb();render();say('Listo: empezaste de cero 🌱')};
 /* ---------- sincronización con código secreto (jsonblob.com, gratis y sin cuenta) ---------- */
-var API="https://jsonblob.com/api/jsonBlob/",RA="https://api.restful-api.dev/objects/",CK="plantita-code",CODE="",spt;
+var API="https://jsonblob.com/api/jsonBlob",RA="https://api.restful-api.dev/objects",CK="plantita-code",CODE="",spt;
 function syncMsg(t){document.getElementById("sync").textContent=t}
 function why(e){return typeof e==="number"?"error "+e:"sin conexión o bloqueado por el navegador"}
 function chk(r){if(!r.ok)throw r.status;return r}
 function isR(c){return c.indexOf("R-")===0}
-function req(m,id,body){return fetch(API+(id||""),{method:m,headers:{"Content-Type":"application/json","Accept":"application/json"},body:body}).then(chk)}
-function rq(m,id,body){return fetch(RA+(id||""),{method:m,headers:{"Content-Type":"application/json"},body:body}).then(chk)}
+function req(m,id,body){return fetch(id?API+"/"+id:API,{method:m,headers:{"Content-Type":"application/json","Accept":"application/json"},body:body}).then(chk)}
+function rq(m,id,body){return fetch(id?RA+"/"+id:RA,{method:m,headers:{"Content-Type":"application/json"},body:body}).then(chk)}
 function wrap(){return JSON.stringify({name:"plantita",data:JSON.parse(payload())})}
 function rGet(c){return isR(c)?rq("GET",c.slice(2)).then(function(r){return r.json()}).then(function(o){return o.data}):req("GET",c).then(function(r){return r.json()})}
 function rPut(c){return isR(c)?rq("PUT",c.slice(2),wrap()):req("PUT",c,payload())}
 function mkA(){return req("POST","",payload()).then(function(r){var l=r.headers.get("Location"),id=l&&l.split("/").pop();if(!id)throw 0;return id})}
 function mkB(){return rq("POST","",wrap()).then(function(r){return r.json()}).then(function(o){if(!o||!o.id)throw 0;return "R-"+o.id})}
-function showCode(){var c=!!CODE;document.getElementById("scr").hidden=c;document.getElementById("sjn").hidden=c;document.getElementById("sco").hidden=!c;document.getElementById("scv").textContent=CODE}
+function showCode(){var c=!!CODE;document.getElementById("scr").hidden=c;document.getElementById("sjn").hidden=false;document.getElementById("sco").hidden=!c;document.getElementById("scv").textContent=CODE}
 function setCode(c){CODE=c;try{c?localStorage.setItem(CK,c):localStorage.removeItem(CK)}catch(e){}showCode()}
 function payload(){return JSON.stringify({s:JSON.stringify(S),mod:S.mod||0})}
-function push(){if(!CODE)return;clearTimeout(spt);spt=setTimeout(function(){rPut(CODE).then(function(){syncMsg("☁️ Sincronizado")}).catch(function(e){if(e===404)create();else syncMsg("☁️ Sin conexión: se guarda acá y reintenta en el próximo cambio")})},800)}
-function create(){syncMsg("Creando código…");if(!S.mod)S.mod=Date.now();return mkA().catch(function(){return mkB()}).then(function(id){setCode(id);syncMsg("☁️ Listo. Escribí este código en tu otro dispositivo.")}).catch(function(e){syncMsg("No se pudo crear el código ("+why(e)+"). Si abrís la app desde Claude o como archivo local, el navegador bloquea la red: subila a un hosting (GitHub Pages, Netlify) o usá “Copiar respaldo”.")})}
+function push(){if(!CODE)return;clearTimeout(spt);spt=setTimeout(function(){rPut(CODE).then(function(){syncMsg("☁️ Sincronizado")}).catch(function(e){if(e===404)create();else syncMsg("☁️ No se pudo sincronizar ("+why(e)+"): se guarda acá y reintenta en el próximo cambio")})},800)}
+function create(){syncMsg("Creando código…");if(!S.mod)S.mod=Date.now();return mkA().catch(function(ea){return mkB().catch(function(eb){throw[ea,eb]})}).then(function(id){setCode(id);syncMsg("☁️ Listo. Escribí este código en tu otro dispositivo.")}).catch(function(e){var m=Array.isArray(e)?"jsonblob: "+why(e[0])+" · restful-api: "+why(e[1]):why(e);syncMsg("No se pudo crear el código ("+m+"). Mientras tanto podés usar “Descargar respaldo” para pasar tus datos a otro dispositivo.")})}
 function applyRemote(d){var o=JSON.parse(d.s);S=fresh();merge(o);S.mod=d.mod;saveLocal();fillRt();fillDays();render();syncMsg("☁️ Sincronizado")}
 function pull(d){if(!d||!d.s||!(d.mod>(S.mod||0)))return false;try{applyRemote(d)}catch(e){}return true}
-function check(){if(!CODE||document.hidden)return;rGet(CODE).then(function(d){if(!pull(d)&&d&&d.mod<(S.mod||0))push();else if(d&&d.mod===S.mod)syncMsg("☁️ Sincronizado")}).catch(function(e){if(e===404)create();else syncMsg("☁️ Sin conexión: se guarda acá y reintenta")})}
+function check(){if(!CODE||document.hidden)return;rGet(CODE).then(function(d){if(!pull(d)&&d&&d.mod<(S.mod||0))push();else if(d&&d.mod===S.mod)syncMsg("☁️ Sincronizado")}).catch(function(e){if(e===404)create();else syncMsg("☁️ No se pudo conectar ("+why(e)+"): se guarda acá y reintenta")})}
 document.getElementById("scr").onclick=create;
 function bk(){return"PLANTITA:"+btoa(unescape(encodeURIComponent(JSON.stringify(S))))}
-document.getElementById("scb").onclick=function(){var t=bk();try{navigator.clipboard.writeText(t).then(function(){say("Respaldo copiado. Pegalo en el otro dispositivo, en el cuadro de código, y tocá Conectar.")}).catch(function(){throw 0})}catch(e){document.getElementById("sci").value=t;document.getElementById("sjn").hidden=false;say("Copiá el texto del cuadro a mano.")}};
+function copyTxt(t){return new Promise(function(ok,no){
+function old(){try{var a=document.createElement("textarea");a.value=t;a.setAttribute("readonly","");a.style.cssText="position:fixed;top:0;left:0;opacity:0;font-size:16px";document.body.appendChild(a);a.focus();a.select();a.setSelectionRange(0,t.length);var r=document.execCommand("copy");a.remove();r?ok():no()}catch(e){no()}}
+if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok,old);else old()})}
+document.getElementById("scb").onclick=function(){var t=bk();copyTxt(t).then(function(){say("Respaldo copiado. Pegalo en el otro dispositivo, en el cuadro de código, y tocá Conectar.")}).catch(function(){var i=document.getElementById("sci");i.value=t;document.getElementById("sjn").hidden=false;i.focus();i.select();say("No pude copiar solo: el respaldo quedó en el cuadro, copialo a mano (o usá Descargar respaldo).")})};
+document.getElementById("scd").onclick=function(){var n=new Date();dlSave("respaldo-plantita-"+n.getFullYear()+pd(n.getMonth()+1)+pd(n.getDate())+".txt",bk(),"text/plain").then(function(){say("Respaldo guardado 💾 Para restaurarlo usá “Restaurar desde archivo”.")}).catch(function(){})};
+function restore(txt){var s=String(txt||""),i=s.indexOf("PLANTITA:"),o;
+if(i<0){syncMsg("Eso no parece un respaldo de Plantita.");return false}
+try{o=JSON.parse(decodeURIComponent(escape(atob(s.slice(i+9).replace(/\s+/g,"")))));if(!o||!Array.isArray(o.goals))throw 0}catch(e){syncMsg("Ese respaldo está incompleto o dañado. Copialo de nuevo completo.");say("El respaldo no es válido.");return false}
+S=fresh();merge(o);S.mod=Date.now();saveLocal();push();try{fillRt();fillDays();render()}catch(e){}
+say("Respaldo restaurado 🌱");syncMsg(CODE?"☁️ Respaldo restaurado, sincronizando…":"📴 Respaldo restaurado en este dispositivo.");return true}
+document.getElementById("scf").onclick=function(){document.getElementById("scfi").click()};
+document.getElementById("scfi").onchange=function(){var f=this.files&&this.files[0],inp=this;if(!f)return;var r=new FileReader();r.onload=function(){restore(r.result);inp.value=""};r.onerror=function(){syncMsg("No pude leer el archivo.")};r.readAsText(f)};
 document.getElementById("scj").onclick=function(){var c=document.getElementById("sci").value.trim();
-if(c.indexOf("PLANTITA:")===0){try{var o=JSON.parse(decodeURIComponent(escape(atob(c.slice(9)))));if(!Array.isArray(o.goals))throw 0;S=fresh();merge(o);S.mod=Date.now();saveLocal();push();fillRt();fillDays();render();say("Respaldo restaurado 🌱")}catch(e){syncMsg("Ese respaldo no es válido.")}return}
+if(c.indexOf("PLANTITA:")>=0){restore(c);return}
+c=c.replace(/\s+/g,"");
 if(!/^[\w-]{6,64}$/.test(c)){syncMsg("Ese código no parece válido.");return}
 syncMsg("Conectando…");rGet(c).then(function(d){if(!d||!d.s)throw 0;setCode(c);applyRemote(d);say("¡Conectado! Tu planta ya está acá 🌱")}).catch(function(e){syncMsg(e===404||e===0?"No encontré ese código. Revisá que esté completo.":"No pude conectar ("+why(e)+").")})};
-document.getElementById("scc").onclick=function(){try{navigator.clipboard.writeText(CODE).then(function(){say("Código copiado. Mandátelo por WhatsApp o mail para usarlo en el otro dispositivo.")})}catch(e){say("Copiá el código a mano.")}};
+document.getElementById("scc").onclick=function(){copyTxt(CODE).then(function(){say("Código copiado. Mandátelo por WhatsApp o mail para usarlo en el otro dispositivo.")}).catch(function(){say("Copiá el código a mano.")})};
 document.getElementById("scx").onclick=function(){setCode("");syncMsg("📴 Desconectado: tus datos siguen en este dispositivo.")};
 try{CODE=localStorage.getItem(CK)||""}catch(e){}
 showCode();if(CODE)check();else syncMsg("📴 Solo en este dispositivo. Activá la sincronización para usarla en el celu y la PC.");
@@ -1124,4 +1136,3 @@ try{chk();upd()}catch(e){}
 })();
 </script>
 </body>
-</html>
