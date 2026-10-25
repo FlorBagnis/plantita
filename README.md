@@ -1,7 +1,7 @@
 # 🌸 Plantita · Cumplí tus metas y hacé crecer tu planta
 
 <p align="center">
-  <img width="100%" alt="Plantita Banner" src="https://plantita.vercel.app/og.png" />
+<img width="1897" height="883" alt="image" src="https://github.com/user-attachments/assets/204a94d9-371a-4103-a81b-ff00009c802a" />
 </p>
 
 > **Plantita** es una Progressive Web App (PWA) interactiva diseñada para transformar pequeños hábitos diarios en un progreso visual motivador. Combina el seguimiento de metas, la técnica Pomodoro, mascotas virtuales y sincronización en la nube en tiempo real.
